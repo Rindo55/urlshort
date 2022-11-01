@@ -74,7 +74,7 @@ async def upload(client, message):
                 message, DOWNLOAD,
           progress=progress,
           progress_args=(
-            file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Uploading to FileChan` \n\n**ETA:** ", 
+            file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Uploading to myfile` \n\n**ETA:** ", 
             m,
             now
             )
@@ -82,7 +82,7 @@ async def upload(client, message):
     try:
         files = {'file': open(sed, 'rb')}
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**")
-        callapi = requests.post("https://api.filechan.org/upload", files=files)
+        callapi = requests.post("https://api.myfile.is/upload", files=files)
         text = callapi.json()
         output = f"""
 {file_caption}
