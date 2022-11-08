@@ -84,23 +84,18 @@ async def upload(client, message):
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**")
         callapi = requests.post("https://api.filechan.org/upload", files=files)
         text = callapi.json()
-        output = f"""
-{file_caption}
-━━━━━━━━━━━━━━━━━━━
-{text['data']['file']['url']['full']}"""
-        btn = InlineKeyboardMarkup(
-                                [[InlineKeyboardButton("📥 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 📥", url=f"{text['data']['file']['url']['full']}")]])
-        kaze = await m.edit(output)
         file_text = text['data']['file']['url']['full']
         long_url = file_text
         api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=CustomAlias"
-        result = json_decode(file_get_contents(api_url),TRUE)
-        nai_text = text['shortenedUrl']
+        result_text = api_url.json()
+        nai_text = result_text['shortenedUrl']
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
 {nai_text}"""
-        daze = await kaze.edit(output)
+        btn = InlineKeyboardMarkup(
+                                [[InlineKeyboardButton("📥 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 📥", url=f"{text['data']['file']['url']['full']}")]])
+        daze = await m.edit(output)
     except Exception:
         OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
        
