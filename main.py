@@ -88,7 +88,8 @@ async def upload(client, message):
         long_url = file_text
         api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=fuk56735&format=text"
         result = file_get_contents(api_url)
-        nai_text = print file_get_contents("https://twin.sh/api/v1/ip")
+        page = urlopen(api_url)
+        nai_text = print page.read()
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
