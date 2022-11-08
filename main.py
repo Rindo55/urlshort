@@ -87,13 +87,22 @@ async def upload(client, message):
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
-[🔗Download Link]({text['data']['file']['url']['full']}`)"""
+[🔗Download Link]({text['data']['file']['url']['full']})"""
         btn = InlineKeyboardMarkup(
                                 [[InlineKeyboardButton("📥 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 📥", url=f"{text['data']['file']['url']['full']}")]])
-        await m.edit(output)
+        kaze = await m.edit(output)
     except Exception:
         OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
-       
+filechaz = text['data']['file']['url']['full']
+long_url = urlencode({filechaz})
+api_token = "fea911843f6e7bec739708f3e562b56184342089"
+api_url = "https://tnlink.in/api?api={api_token}&url={long_url}&alias=CustomAlias&format=text"
+result = @file_get_contents(api_url)
+short_link = f"""
+{file_caption}
+━━━━━━━━━━━━━━━━━━━
+[🔗Download Link]({result})"""
+   await kaze.edit(short_link)
     os.remove(sed)
 
 
