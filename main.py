@@ -90,7 +90,7 @@ async def upload(client, message):
 [🔗Download Link]({text['data']['file']['url']['full']})"""
         btn = InlineKeyboardMarkup(
                                 [[InlineKeyboardButton("📥 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 📥", url=f"{text['data']['file']['url']['full']}")]])
-        kaze = await m.edit(output)
+        await m.edit(output)
     except Exception:
         OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
 filechaz = text['data']['file']['url']['full']
@@ -102,8 +102,8 @@ output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
 [🔗Download Link]({result})"""
-daze = await kaze.edit(output)
-    os.remove(sed)
+await m.edit(output)
+os.remove(sed)
 
 
 
