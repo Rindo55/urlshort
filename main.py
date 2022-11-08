@@ -86,7 +86,8 @@ async def upload(client, message):
         text = callapi.json()
         file_text = text['data']['file']['url']['full']
         long_url = file_text
-        api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=fuk56735"
+        api_token = 'fea911843f6e7bec739708f3e562b56184342089'
+        api_url = "https://tnlink.in/api?api={api_token}&url={long_url}&alias=fuk56735"
         result = json_decode(file_get_contents(api_url),TRUE)
         nai_text = result["shortenedUrl"]
         output = f"""
