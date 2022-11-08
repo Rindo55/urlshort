@@ -89,7 +89,7 @@ async def upload(client, message):
         result = requests.get(api_url)
         nai_text = result.text
         da_url = "https://da.gd/"
-        nx_url = nai_text
+        url = nai_text
         shorten_url = f"{da_url}shorten"
         response = requests.get(shorten_url, params={"url": url)
         nyaa_text = response.text.strip()                                     
