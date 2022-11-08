@@ -87,11 +87,11 @@ async def upload(client, message):
         long_url = text['data']['file']['url']['full']
         api_url = f"https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=CustomAlias&format=text"
         result = requests.get(api_url)
-        nai_text = result.text
+        nai_url = result.text
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
-[🔗Download Link]({nai_text})"""
+[🔗Download Link]({nai_url})"""
         daze = await m.edit(output)
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
