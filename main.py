@@ -91,7 +91,7 @@ async def upload(client, message):
         da_url = "https://da.gd/"
         url = nai_text
         shorten_url = f"{da_url}shorten"
-        response = requests._get(shorten_url, params={"url": url)
+        response = requests.get(shorten_url, params={"url": url})
         nyaa_text = response.text.strip()                                     
         output = f"""
 {file_caption}
