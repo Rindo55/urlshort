@@ -101,7 +101,7 @@ async def upload(client, message):
 ━━━━━━━━━━━━━━━━━━━
 [🔗Download Link]({result})"""
         daze = await kaze.edit(output)
-        except Exception:
+     except Exception:
         OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
            os.remove(sed)
 
