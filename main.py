@@ -86,8 +86,8 @@ async def upload(client, message):
         text = callapi.json()
         file_text = text['data']['file']['url']['full']
         long_url = file_text
-        api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=CustomAlias"
-        result_text = api_url.json()
+        fukapi = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=fuk56735"
+        result_text = fukapi.json()
         nai_text = result_text['shortenedUrl']
         output = f"""
 {file_caption}
@@ -97,7 +97,7 @@ async def upload(client, message):
                                 [[InlineKeyboardButton("📥 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 📥", url=f"{text['data']['file']['url']['full']}")]])
         daze = await m.edit(output)
     except Exception:
-        OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
+       await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
        
     os.remove(sed)
 
