@@ -94,11 +94,12 @@ async def upload(client, message):
         filechaz = text['data']['file']['url']['full']
         long_url = filechaz
         api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=CustomAlias&format=text"
-        result = file_get_contents(api_url)
+        result = json_decode(file_get_contents($api_url),TRUE)
+        nai_text = text['shortenedUrl']
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
-[🔗Download Link]({result})"""
+{nai_text}"""
         daze = await kaze.edit(output)
     except Exception:
         OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
