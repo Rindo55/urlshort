@@ -97,7 +97,7 @@ filechaz = text['data']['file']['url']['full']
 long_url = urlencode({filechaz})
 api_token = "fea911843f6e7bec739708f3e562b56184342089"
 api_url = "https://tnlink.in/api?api={api_token}&url={long_url}&alias=CustomAlias&format=text"
-result = @file_get_contents(api_url)
+result = file_get_contents(api_url)
 short_output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
