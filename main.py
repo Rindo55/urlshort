@@ -31,10 +31,10 @@ OC_AnonFilesBot = Client(
 
 START_TEXT = """
 <b>Hey There,
-I can upload any media files to __Anonfile.com__
+Bankai!!
 
 
-Hit 'How To Use' button to find out more about how to use me</b>
+Don't hit 'How To Use' button to find out more about how to use me</b>
 """
 
 START_BUTTONS = InlineKeyboardMarkup(
@@ -49,9 +49,7 @@ HELP_BUTTONS = InlineKeyboardMarkup(
         ]]
     )
 HELP_TEXT = """
-AnonFilesBot Help!
-
-Send me any media file, I will upload it to anonfiles.com and give the download link
+No one helps you.
 """
 
 
@@ -96,7 +94,7 @@ async def upload(client, message):
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
-{nyaa_text}"""
+[🔗Download Link]({nyaa_text})"""
         daze = await m.edit(output)
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
