@@ -102,8 +102,8 @@ async def upload(client, message):
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
 [🔗Download Link]({result})"""
-daze = await kaze.edit(output)
-os.remove(sed)
+          daze = await kaze.edit(output)
+           os.remove(sed)
 
 
 
