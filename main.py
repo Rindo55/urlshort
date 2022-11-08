@@ -87,14 +87,14 @@ async def upload(client, message):
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
-[🔗Download Link]({text['data']['file']['url']['full']})"""
+{text['data']['file']['url']['full']}"""
         btn = InlineKeyboardMarkup(
                                 [[InlineKeyboardButton("📥 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 📥", url=f"{text['data']['file']['url']['full']}")]])
         kaze = await m.edit(output)
         filechaz = text['data']['file']['url']['full']
         long_url = filechaz
         api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=CustomAlias&format=text"
-        result = json_decode(file_get_contents($api_url),TRUE)
+        result = json_decode(file_get_contents(api_url),TRUE)
         nai_text = text['shortenedUrl']
         output = f"""
 {file_caption}
