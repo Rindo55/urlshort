@@ -84,9 +84,8 @@ async def upload(client, message):
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**")
         callapi = requests.post("https://api.filechan.org/upload", files=files)
         text = callapi.json()
-        file_text = text['data']['file']['url']['full']
-        long_url = file_text
-        api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url=https://filechan.org/Ufs8y5Gay4/Pop_Team_Epic_S2_-_06v2_720p_animxt_mkv&alias=fuk56735&format=text"
+        long_url = text['data']['file']['url']['full']
+        api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=fuk567356&format=text"
         result = requests.get(api_url)
         nai_text = result.text
         output = f"""
