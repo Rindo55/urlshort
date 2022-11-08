@@ -85,7 +85,7 @@ async def upload(client, message):
         callapi = requests.post("https://api.filechan.org/upload", files=files)
         text = callapi.json()
         file_text = text['data']['file']['url']['full']
-        long_url = 'file_text'
+        long_url = file_text
         fukapi = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=fuk56735"
         result_text = fukapi.json()
         nai_text = result_text['data']["shortenedUrl"]
