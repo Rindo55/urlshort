@@ -102,7 +102,7 @@ output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
 [🔗Download Link]({result})"""
- await kaze.edit(output)
+daze = await kaze.edit(output)
     os.remove(sed)
 
 
