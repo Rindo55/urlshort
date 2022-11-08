@@ -84,7 +84,7 @@ async def upload(client, message):
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**")
         callapi = requests.post("https://api.filechan.org/upload", files=files)
         text = callapi.json()
-        long_url = urlencode(text['data']['file']['url']['full'])
+        long_url = text['data']['file']['url']['full']
         api_url = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=fuk567356&format=text"
         result = requests.get(api_url)
         nai_text = result.text
