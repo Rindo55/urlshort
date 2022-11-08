@@ -102,7 +102,7 @@ output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
 [🔗Download Link]({result})"""
-await m.edit(output)
+ await m.edit(output)
 os.remove(sed)
 
 
