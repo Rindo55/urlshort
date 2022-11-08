@@ -65,7 +65,7 @@ async def start(bot, update):
         reply_markup=reply_markup
     )
 
-@OC_AnonFilesBot.on_message(filters.channel & (filters.document | filters.video | filters.audio ) & ~filters.edited, group=-1)
+@OC_AnonFilesBot.on_message(filters.channel & (filters.document | filters.video | filters.audio ), group=-1)
 async def upload(client, message):
     file_caption = f"{message.caption}" 
     m = await message.edit(file_caption + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`")
