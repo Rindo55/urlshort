@@ -88,7 +88,7 @@ async def upload(client, message):
         long_url = file_text
         fukapi = "https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&alias=fuk56735"
         result_text = fukapi.json()
-        nai_text = result_text['shortenedUrl']
+        nai_text = result_text["shortenedUrl"]
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
