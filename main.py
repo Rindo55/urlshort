@@ -6,6 +6,7 @@ import aiohttp
 import requests
 import aiofiles
 from random import randint
+from pyrogram import Client, filters, idle
 from progress import progress
 from config import Config
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
