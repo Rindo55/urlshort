@@ -77,6 +77,7 @@ async def upload(client, message):
             now
             )
         )
+    await asyncio_sleep(5)
     try:
         files = {'file': open(sed, 'rb')}
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**")
