@@ -65,7 +65,7 @@ async def start(bot, update):
 
 @OC_AnonFilesBot.on_message(filters.channel & (filters.document | filters.video | filters.audio ) & ~filters.edited, group=-1)
 async def upload(client, message):
-    file_caption = message.caption.text
+    file_caption = message.caption
     m = await message.edit(file_caption + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`", parse_mode = "markdown")
     now = time.time()
     sed = await OC_AnonFilesBot.download_media(
@@ -94,7 +94,7 @@ async def upload(client, message):
         output = f"""
 {file_caption}
 ━━━━━━━━━━━━━━━━━━━
-[🔗Download Link]({long_url})"""
+[🔗Download Link]({nyaa_text})"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
