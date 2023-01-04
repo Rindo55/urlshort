@@ -66,7 +66,7 @@ async def start(bot, update):
 @OC_AnonFilesBot.on_message(filters.channel & (filters.document | filters.video | filters.audio ) & ~filters.edited, group=-1)
 async def upload(client, message):
     file_caption = f"{message.caption}" 
-    m = await message.edit(file_caption + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`")
+    m = await message.edit(file_caption + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`", parse_mode = "markdown")
     now = time.time()
     sed = await OC_AnonFilesBot.download_media(
                 message, DOWNLOAD,
@@ -79,7 +79,7 @@ async def upload(client, message):
         )
     try:
         files = {'file': open(sed, 'rb')}
-        await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**")
+        await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**", parse_mode = "markdown")
         callapi = requests.post("https://api.filechan.org/upload", files=files)
         text = callapi.json()
         long_url = text['data']['file']['url']['full']
