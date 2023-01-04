@@ -65,8 +65,8 @@ async def start(bot, update):
 
 @OC_AnonFilesBot.on_message(filters.channel & (filters.document | filters.video | filters.audio ) & ~filters.edited, group=-1)
 async def upload(client, message):
-    file_caption = message.text
-    m = await message.edit(file_caption + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`", parse_mode = "markdown")
+    file_text = message.text
+    m = await message.edit(file_text + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`", parse_mode = "markdown")
     now = time.time()
     sed = await OC_AnonFilesBot.download_media(
                 message, DOWNLOAD,
