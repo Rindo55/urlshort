@@ -84,12 +84,12 @@ async def upload(client, message):
         text = callapi.json()
         long_url = text['data']['file']['url']['full']
         api_url = f"https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&format=text"
-        result = requests.post(api_url)
+        result = requests.get(api_url)
         nai_text = result.text
         da_url = "https://da.gd/"
         url = nai_text
         shorten_url = f"{da_url}shorten"
-        response = requests.get(shorten_url, params={"url": url})
+        response = requests.post(shorten_url, params={"url": url})
         nyaa_text = response.text.strip()                                     
         output = f"""
 {file_caption}
