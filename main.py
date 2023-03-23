@@ -10,7 +10,6 @@ from pyrogram import Client, filters, idle
 from progress import progress
 from config import Config
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InlineQuery, InputTextMessageContent
-import BeautifulSoup
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 
