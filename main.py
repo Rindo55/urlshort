@@ -80,11 +80,11 @@ async def upload(client, message):
     try:
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**", parse_mode = "markdown")
         da_url = "https://da.gd/"                                 
-        server = requests.post(url="https://api.gofile.io/getServer").json()["data"]["server"]
+        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={'file': open(sed, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
         gotn_url = f"http://ouo.io/api/jezWr0hG?s={directlink}"
-        gofinal = requests.get(gotn_url)
+        gofinal = requests.post(gotn_url)
         go_text = gofinal.text
         gourl = go_text
         gofile_url = f"{da_url}shorten"
