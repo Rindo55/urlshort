@@ -83,11 +83,11 @@ async def upload(client, message):
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={'file': open(sed, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
         gotn_url = f"http://ouo.io/api/jezWr0hG?s={directlink}"
-        gofinal = requests.post(gotn_url)
+        gofinal = requests.get(gotn_url)
         go_text = gofinal.text
         gourl = go_text
         gofile_url = f"{da_url}shorten"
-        goresponse = requests.post(gofile_url, params={"url": gourl})
+        goresponse = requests.get(gofile_url, params={"url": gourl})
         gofuk_text = goresponse.text.strip()
         output = f"""
 {gcaption}
