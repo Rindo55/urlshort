@@ -5,3 +5,4 @@ requests
 aiohttp
 aiofiles
 html5lib
+BeautifulSoup4
