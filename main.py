@@ -80,21 +80,22 @@ async def upload(client, message):
     try:
         files = {'file': open(sed, 'rb')}
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**", parse_mode = "markdown")
-        callapi = requests.post("https://api.filechan.org/upload", files=files)
-        text = callapi.json()
-        long_url = text['data']['file']['url']['full']
-        api_url = f"https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={long_url}&format=text"
-        result = requests.get(api_url)
-        nai_text = result.text
-        da_url = "https://da.gd/"
-        url = nai_text
-        shorten_url = f"{da_url}shorten"
-        response = requests.post(shorten_url, params={"url": url})
-        nyaa_text = response.text.strip()                                     
+        da_url = "https://da.gd/"                                 
+        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
+        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files=files.json()
+        directlink = uploadxz["data"]["downloadPage"]    
+        gotn_url = f"http://ouo.io/api/jezWr0hG?s={directlink}"
+        gofinal = requests.get(gotn_url)
+        go_text = gofinal.text
+        gourl = go_text
+        gofile_url = f"{da_url}shorten"
+        goresponse = requests.get(gofile_url, params={"url": gourl})
+        gofuk_text = goresponse.text.strip()
         output = f"""
-{file_caption}
+{gcaption}
 ━━━━━━━━━━━━━━━━━━━
-[🔗Download Link]({nyaa_text})"""
+**External Download Links**
+[Gofile]({gofuk_text})"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
