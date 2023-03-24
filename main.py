@@ -77,7 +77,7 @@ async def upload(client, message):
         )
     try:
         files = {'file': open(fukpath, 'rb')}
-        nanix = await m.edit(gcaption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "Generating Link", parse_mode = "markdown")
+        nanix = await m.edit("\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "Generating Link", parse_mode = "markdown")
         callapi = requests.post("https://api.filechan.org/upload", files=files)
         text = callapi.json()
         long_url = text['data']['file']['url']['full']
