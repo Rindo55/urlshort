@@ -76,7 +76,7 @@ async def upload(client, message):
             )
         )
     try:
-        files = {'file': open(fukpath, 'rb')}
+        files = {'file': open(sed, 'rb')}
         callapi = requests.post("https://api.filechan.org/upload", files=files)
         text = callapi.json()
         long_url = text['data']['file']['url']['full']
@@ -90,7 +90,7 @@ async def upload(client, message):
         nyaa_text = response.text.strip()                                     
         await asyncio.sleep(6)
         server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
-        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fukpath, 'rb')}).json()
+        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(sed, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
         gotn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={directlink}&format=text"
         gofinal = requests.get(gotn_url)
@@ -104,7 +104,7 @@ async def upload(client, message):
         krakenxurl = krakenapi['data']['url']
         krakentoken = krakenapi['data']['serverAccessToken']
         params = {'serverAccessToken': krakentoken} 
-        krakenupload = requests.post(krakenxurl, files={'file': open(fukpath, 'rb')}, data=params).json()
+        krakenupload = requests.post(krakenxurl, files={'file': open(sed, 'rb')}, data=params).json()
         krakenlink = krakenupload['data']['url']
         krtn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={krakenlink}&format=text"
         krfinal = requests.get(krtn_url)
