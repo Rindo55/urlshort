@@ -102,14 +102,14 @@ async def upload(client, message):
         
         mirrorurl = "https://www.mirrored.to/api/v1/get_upload_info"
         mirrored = requests.get(mirrorurl, params={"api_key": "637a19cad28bbd4e9ceebf2026a33d8b"}).json()
-        mirr = mirrored['data']['upload_id']
-        mir = mirrored['data']['file_upload_url']
+        mirr = mirrored['upload_id']
+        mir = mirrored['file_upload_url']
         mirparam = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr}
         mirx = requests.post(mir, files={'Filedata': open(sed, 'rb')}, data=mirparam).json()
         suxkurl = "https://www.mirrored.to/api/v1/finish_upload"
         mirparamz = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr, "mirrors": "anonfile"}
         mirxz = requests.get(suxkurl, data=mirparamz).json()
-        miru = mirxz['data']['full_url']                     
+        miru = mirxz['full_url']                     
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
