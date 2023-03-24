@@ -74,9 +74,9 @@ async def upload(client, message):
             )
         )
     try:
-        await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**", parse_mode = "markdown")
+        await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`", parse_mode = "markdown")
         da_url = "https://da.gd/"                                 
-        serverx = requests.post(url="https://api.gofile.io/getServer")
+        serverx = requests.get(url="https://api.gofile.io/getServer")
         nami = serverx.json()
         usd = nami["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={'file': open(sed, 'rb')}).json()
