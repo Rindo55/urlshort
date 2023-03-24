@@ -85,15 +85,11 @@ async def upload(client, message):
         gotn_url = f"http://ouo.io/api/jezWr0hG?s={directlink}"
         gofinal = requests.get(gotn_url)
         go_text = gofinal.text
-        gourl = go_text
-        gofile_url = f"{da_url}shorten"
-        goresponse = requests.get(gofile_url, params={"url": gourl})
-        gofuk_text = goresponse.text.strip()
         output = f"""
 {gcaption}
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-{gofuk_text}"""
+{go_text}"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
