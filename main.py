@@ -101,13 +101,13 @@ async def upload(client, message):
         gofuk_text = goresponse.text.strip()
         
         mirrorurl = "https://www.mirrored.to/api/v1/get_upload_info"
-        mirrored = requests.get(mirrorurl, params={"api_key": "637a19cad28bbd4e9ceebf2026a33d8b"})
+        mirrored = requests.get(mirrorurl, params={"api_key": "637a19cad28bbd4e9ceebf2026a33d8b"}).json()
         mirr = mirrored['upload_id']
         mir = mirrored['file_upload_url']
         mirparam = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr}
-        mirx = requests.post(mir, files={'Filedata': open(sed, 'rb')}, data=mirparams)
+        mirx = requests.post(mir, files={'Filedata': open(sed, 'rb')}, data=mirparams).json()
         suxkurl = "https://www.mirrored.to/api/v1/finish_upload"
-        mirparamz = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr, "mirrors": 'anonfile'}
+        mirparamz = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr, "mirrors": "anonfile"}.json()
         mirxz = requests.get(suxkurl, data=mirparamz)
         miru = mirxz['full_url']                     
         output = f"""
