@@ -81,9 +81,9 @@ async def upload(client, message):
         server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={'file': open(sed, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]  
-        gotn_url = f"https://ouo.io/api/jezWr0hG?s={directlink}"
+        gotn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={directlink}"
         gofinal = requests.get(gotn_url)
-
+        go_text = gofinal.text
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
