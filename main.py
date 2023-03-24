@@ -99,10 +99,23 @@ async def upload(client, message):
         gofile_url = f"{da_url}shorten"
         goresponse = requests.get(gofile_url, params={"url": gourl})
         gofuk_text = goresponse.text.strip()
+        krakenapi = requests.get(url="https://krakenfiles.com/api/server/available").json()
+        krakenxurl = krakenapi['data']['url']
+        krakentoken = krakenapi['data']['serverAccessToken']
+        params = {'serverAccessToken': krakentoken} 
+        krakenupload = requests.post(krakenxurl, files={'file': open(sed, 'rb')}, data=params).json()
+        krakenlink = krakenupload['data']['url']
+        krtn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={krakenlink}&format=text"
+        krfinal = requests.get(krtn_url)
+        kr_text = krfinal.text
+        krurl = kr_text
+        krfile_url = f"{da_url}shorten"
+        krresponse = requests.get(krfile_url, params={"url": krurl})
+        krfuk_text = krresponse.text.strip()
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text})"""
+[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text}) | [KrakenFiles]({krfuk_text})"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
