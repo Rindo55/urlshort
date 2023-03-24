@@ -69,16 +69,16 @@ async def upload(client, message):
     now = time.time()
     sed = await OC_AnonFilesBot.download_media(
                 message, DOWNLOAD,          
-            progress_args=(
-            "**𝚄𝚙𝚕𝚘𝚊𝚍 𝙿𝚛𝚘𝚐𝚛𝚎𝚜𝚜 𝚂𝚝𝚊𝚛𝚝𝚎𝚍, 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 !**"
+          progress_args=(
+            "**𝚄𝚙𝚕𝚘𝚊𝚍 𝙿𝚛𝚘𝚐𝚛𝚎𝚜𝚜 𝚂𝚝𝚊𝚛𝚝𝚎𝚍, 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 !**\n**𝕀ᴛ𝕤 𝕋ᴀᴋᴇ ᴛɪᴍᴇ 𝔸ᴄᴄᴏʀᴅɪɴɢ 𝕐ᴏᴜʀ 𝔽ɪʟᴇ𝕤 𝕊ɪᴢᴇ** \n\n**ᴇᴛᴀ:** ", 
+            m,
+            now
             )
         )
     try:
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`", parse_mode = "markdown")
         da_url = "https://da.gd/"                                 
-        serverx = requests.get(url="https://api.gofile.io/getServer")
-        nami = serverx.json()
-        usd = nami["data"]["server"]
+        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={'file': open(sed, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
         output = f"""
