@@ -82,14 +82,11 @@ async def upload(client, message):
         server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={'file': open(sed, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
-        gotn_url = f"http://ouo.io/api/jezWr0hG?s={directlink}"
-        gofinal = requests.get(gotn_url)
-        go_text = gofinal.text
         output = f"""
 {gcaption}
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-{go_text}"""
+{directlink}"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
