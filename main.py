@@ -88,11 +88,22 @@ async def upload(client, message):
         url = nai_text
         shorten_url = f"{da_url}shorten"
         response = requests.get(shorten_url, params={"url": url})
-        nyaa_text = response.text.strip()                                     
+        nyaa_text = response.text.strip()  
+        await asyncio.sleep(6)
+        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
+        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(sed, 'rb')}).json()
+        directlink = uploadxz["data"]["downloadPage"]    
+        gotn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={directlink}&format=text"
+        gofinal = requests.get(gotn_url)
+        go_text = gofinal.text
+        gourl = go_text
+        gofile_url = f"{da_url}shorten"
+        goresponse = requests.get(gofile_url, params={"url": gourl})
+        gofuk_text = goresponse.text.strip()
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-[Filechan]({nyaa_text})"""
+[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text})"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
