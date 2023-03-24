@@ -99,23 +99,21 @@ async def upload(client, message):
         gofile_url = f"{da_url}shorten"
         goresponse = requests.get(gofile_url, params={"url": gourl})
         gofuk_text = goresponse.text.strip()
-        krakenapi = requests.get(url="https://krakenfiles.com/api/server/available").json()
-        krakenxurl = krakenapi['data']['url']
-        krakentoken = krakenapi['data']['serverAccessToken']
-        params = {'serverAccessToken': krakentoken} 
-        krakenupload = requests.post(krakenxurl, files={'file': open(sed, 'rb')}, data=params).json()
-        krakenlink = krakenupload['data']['url']
-        krtn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={krakenlink}&format=text"
-        krfinal = requests.get(krtn_url)
-        kr_text = krfinal.text
-        krurl = kr_text
-        krfile_url = f"{da_url}shorten"
-        krresponse = requests.get(krfile_url, params={"url": krurl})
-        krfuk_text = krresponse.text.strip()
+        
+        mirrorurl = "https://www.mirrored.to/api/v1/get_upload_info"
+        mirrored = requests.get(mirrorurl, params={"api_key": "637a19cad28bbd4e9ceebf2026a33d8b"})
+        mirr = mirrored['upload_id']
+        mir = mirrored['file_upload_url']
+        mirparam = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr}
+        mirx = requests.post(mir, files={'Filedata': open(sed, 'rb')}, data=params)
+        suxkurl = "https://www.mirrored.to/api/v1/finish_upload"
+        mirparamz = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr, "mirrors": 'anonfile'}
+        mirxz = requests.get(suxkurl, data=params)
+        miru = mirxz['full_url']                     
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text}) | [KrakenFiles]({krfuk_text})"""
+[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text}) | {miru}"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
