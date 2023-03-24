@@ -87,7 +87,7 @@ async def upload(client, message):
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-{gofinal}"""
+{go_text}"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
