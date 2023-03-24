@@ -89,7 +89,7 @@ async def upload(client, message):
         shorten_url = f"{da_url}shorten"
         response = requests.get(shorten_url, params={"url": url})
         nyaa_text = response.text.strip()  
-        await asyncio.sleep(6)
+        await asyncio.sleep(15)
         server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(sed, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
