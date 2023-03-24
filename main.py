@@ -68,7 +68,11 @@ async def upload(client, message):
     m = await message.edit(file_caption + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`", parse_mode = "markdown")
     now = time.time()
     sed = await OC_AnonFilesBot.download_media(
-                message, DOWNLOAD)
+                message, DOWNLOAD,          
+            progress_args=(
+            "**𝚄𝚙𝚕𝚘𝚊𝚍 𝙿𝚛𝚘𝚐𝚛𝚎𝚜𝚜 𝚂𝚝𝚊𝚛𝚝𝚎𝚍, 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 !**"
+            )
+        )
     try:
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**", parse_mode = "markdown")
         da_url = "https://da.gd/"                                 
