@@ -85,9 +85,8 @@ async def upload(client, message):
 **External Download Links**
 {directlink}"""
         daze = await m.edit(output, parse_mode = "markdown")
-     except Exception:
-        OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
-       
+    except Exception:
+       await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
     os.remove(sed)
 
 
