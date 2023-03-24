@@ -68,14 +68,7 @@ async def upload(client, message):
     m = await message.edit(file_caption + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n"  + "`Uploading to filechan`", parse_mode = "markdown")
     now = time.time()
     sed = await OC_AnonFilesBot.download_media(
-                message, DOWNLOAD,
-          progress=progress,
-          progress_args=(
-            file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Uploading to filechan` \n\n**ETA:** ", 
-            m,
-            now
-            )
-        )
+                message, DOWNLOAD)
     try:
         await m.edit(file_caption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "`Generating Link`**", parse_mode = "markdown")
         da_url = "https://da.gd/"                                 
@@ -88,8 +81,6 @@ async def upload(client, message):
 **External Download Links**
 {directlink}"""
         daze = await m.edit(output, parse_mode = "markdown")
-    except Exception:
-       await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
        
     os.remove(sed)
 
