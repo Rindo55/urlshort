@@ -80,7 +80,7 @@ async def upload(client, message):
         files = {'file': open(sed, 'rb')}
         await m.edit("**𝕌𝕡𝕝𝕠𝕒𝕕𝕚𝕟𝕘 𝕋𝕠 𝔸𝕟𝕠𝕟𝔽𝕚𝕝𝕖𝕤! ℙ𝕝𝕖𝕒𝕤𝕖 𝕎𝕒𝕚𝕥**")
         
-        repz = pixeldrain.upload_file(files)
+        repz = pixeldrain.upload_file(sed)
         if repz["success"]:               
                data = pixeldrain.info(repz["id"])   
         else:
