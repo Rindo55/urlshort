@@ -106,7 +106,7 @@ async def upload(client, message):
         if repz["success"]:               
                data = pixeldrain.info(repz["id"])   
         else:
-          print("Failed!)
+          print("Failed!")
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
