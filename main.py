@@ -79,38 +79,19 @@ async def upload(client, message):
     try:
         files = {'file': open(sed, 'rb')}
         await m.edit("**𝕌𝕡𝕝𝕠𝕒𝕕𝕚𝕟𝕘 𝕋𝕠 𝔸𝕟𝕠𝕟𝔽𝕚𝕝𝕖𝕤! ℙ𝕝𝕖𝕒𝕤𝕖 𝕎𝕒𝕚𝕥**")
-        callapi = requests.post("https://api.filechan.org/upload", files=files)
-        text = callapi.json()
-        long_url = text['data']['file']['url']['full']
-        api_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={long_url}&format=text"
-        result = requests.get(api_url)
-        nai_text = result.text
-        da_url = "https://da.gd/"
-        url = nai_text
-        shorten_url = f"{da_url}shorten"
-        response = requests.get(shorten_url, params={"url": url})
-        nyaa_text = response.text.strip()  
-        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
-        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(sed, 'rb')}).json()
-        directlink = uploadxz["data"]["downloadPage"]    
-        gotn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={directlink}&format=text"
-        gofinal = requests.get(gotn_url)
-        go_text = gofinal.text
-        gourl = go_text
-        gofile_url = f"{da_url}shorten"
-        goresponse = requests.get(gofile_url, params={"url": gourl})
-        gofuk_text = goresponse.text.strip()
+        
         repz = pixeldrain.upload_file(files)
-        dlpage = f"https://pixeldrain.com/u/{data['id']}"
-        ddl = f"https://pixeldrain.com/api/file/{data['id']}"
-        if repz["success"]:               
+       if repz["success"]:               
                data = pixeldrain.info(repz["id"])   
         else:
           print("Failed!")
+        dlpage = f"https://pixeldrain.com/u/{data['id']}"
+        ddl = f"https://pixeldrain.com/api/file/{data['id']}"
+       
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text}) | {dlpage} | {ddl}"""
+ {dlpage} | {ddl}"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
