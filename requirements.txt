@@ -6,3 +6,4 @@ aiohttp
 aiofiles
 html5lib
 BeautifulSoup4
+pixeldrain
