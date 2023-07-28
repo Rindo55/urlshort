@@ -1,6 +1,7 @@
 import os
 import time
 import logging
+import pixeldrain 
 import pyrogram
 import aiohttp
 import requests
@@ -99,21 +100,17 @@ async def upload(client, message):
         gofile_url = f"{da_url}shorten"
         goresponse = requests.get(gofile_url, params={"url": gourl})
         gofuk_text = goresponse.text.strip()
-        
-        mirrorurl = "https://www.mirrored.to/api/v1/get_upload_info"
-        mirrored = requests.get(mirrorurl, params={"api_key": "637a19cad28bbd4e9ceebf2026a33d8b"}).json()
-        mirr = mirrored['upload_id']
-        mir = mirrored['file_upload_url']
-        mirparam = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr}
-        mirx = requests.post(mir, files={'Filedata': open(sed, 'rb')}, data=mirparam).json()
-        suxkurl = "https://www.mirrored.to/api/v1/finish_upload"
-        mirparamz = {"api_key": "637a19cad28bbd4e9ceebf2026a33d8b", "upload_id": mirr, "mirrors": "anonfile"}
-        mirxz = requests.get(suxkurl, data=mirparamz).json()
-        miru = mirxz['full_url']                     
+        repz = pixeldrain.upload_file(files)
+        dlpage = f"https://pixeldrain.com/u/{data['id']}"
+        ddl = f"https://pixeldrain.com/api/file/{data['id']}"
+        if repz["success"]:               
+               data = pixeldrain.info(repz["id"])   
+        else:
+          print("Failed!)
         output = f"""
 ━━━━━━━━━━━━━━━━━━━
 **External Download Links**
-[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text}) | {miru}"""
+[Filechan]({nyaa_text})  |  [Gofile]({gofuk_text}) | {dlpage} | {ddl}"""
         daze = await m.edit(output, parse_mode = "markdown")
     except Exception:
        await OC_AnonFilesBot.send_message(message.chat.id, text="Something Went Wrong!")
